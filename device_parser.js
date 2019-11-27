@@ -8,6 +8,7 @@ function deviceParser() {
     const $pathName = location.pathname;
     let $pathNameSpDelete = $pathName.replace('/sp', '');
     let $pathNameRootDelete = $pathName.replace($root, '');
+    let $urlParameter = location.search; //パラメタなど
 
     //URLに/sp/を検知した場合
     if ($pathName.indexOf('/sp/') != -1) {
@@ -24,7 +25,7 @@ function deviceParser() {
 
         //ユーザーエージェントがSP時はSPページへリダイレクト
         if ((navigator.userAgent.indexOf('iPhone') > 0 && navigator.userAgent.indexOf('iPad') == -1) || navigator.userAgent.indexOf('iPod') > 0 || (navigator.userAgent.indexOf('Android') > 0 && navigator.userAgent.indexOf('Mobile') > 0)) {
-            location.href = $root + '/sp' + $pathNameRootDelete;
+            location.href = $root + '/sp' + $pathNameRootDelete + $urlParameter;;
         }
 
         //ユーザーエージェントがPC時は何も処理しない
